@@ -20,7 +20,7 @@ Its subject matter in one sentence: **a human and an AI completing a task goal t
 
 The name marks the discipline's center of gravity. A human in such a system does exactly three things (§3): align the intent, grant the capability, verify the result. Intent is the highest-leverage of the three — every downstream decision the AI makes derives from it, it is the default suspect in every failure, and as models strengthen it asymptotically becomes the human's only remaining work (§6). Just as context engineering governs more than context — tools, memory, retrieval — intent engineering governs more than intent: the name points at the center; the discipline covers the entire interface between the human and the AI.
 
-One boundary stone at the door: **intent engineering is not phrasing.** "Saying what you want more clearly" is prompt engineering with better manners. What intent engineering engineers is the *entire path* an intent travels through an AI-led system — how it is elicited and compiled (§3), granted capability (§3), unfolded into dispatches (§4), stewarded (§5), and verified (§7), with the AI's matching obligations at every step.
+One boundary stone at the door: **intent engineering is not phrasing.** "Saying what you want more clearly" is prompt engineering with better manners. What intent engineering engineers is the *entire path* an intent travels through an AI-led system — how it is elicited and compiled (§3), granted capability (§3), unfolded into dispatches (§4), stewarded (§5), and verified (§7), with the AI's matching obligations at every step. It does, as a side effect, train the human to ask better (the echo in §3) — but that is a by-product, not the discipline.
 
 By lineage, it is the next stop after prompt engineering and context engineering. The artifacts handed to the machine grow more abstract in order: a prompt is a message; a context is the full input of one invocation; an intent is the goal itself. At each step up, the human hands over less and the system takes over more — driven by axiom A1: capability migrates to the AI.
 
@@ -71,7 +71,7 @@ When outcomes go wrong, responsibility lands on a human — legally, contractual
 
 In an AI-led system, the human is an interface with exactly **three endpoints**. Everything a human legitimately contributes routes through one of them.
 
-### `intent` — align the goal
+### `intent` — align the intent
 The human states *what is wanted, where the boundaries are, and what counts as success*, and hands it to the AI. This is the human's highest-leverage act: every downstream decision the AI makes is derived from it. A goal hand-off is complete when it specifies at minimum: **objective, boundaries, acceptance criteria, and available permissions**. Ambiguity here is not a small defect — by the failure-attribution rule (§6), it is the *default suspect* for every bad outcome.
 
 Nor is a goal hand-off a single utterance. It is an **AI-led convergence process** whose product is a written goal spec — a document the human can read, amend, and release. Three process rules govern it. **No guessing** — gaps in the spec are closed with targeted questions or filled with declared defaults, never silently assumed. **Research before release** — during alignment the AI investigates first (reaching the open web when needed), putting foreseeable problems and risks on the table as inputs to the discussion rather than surprises during execution. **Guide and echo** — the AI actively guides and extends the human's thinking, and echoes back the optimized expression of the goal for confirmation. The echo is more than confirmation: seeing their own words next to the compiled version is how the human's asking improves over time. This mirrors §8 — the AI's autonomy is measured into existence; the human's intent quality is trained into existence. Alignment ends with the human's explicit release; while disagreement remains, nothing executes.
@@ -100,7 +100,7 @@ Because human attention is the scarce resource (§1), every task the AI dispatch
 4. **Risk** — reversibility, blast radius, and cost of error, so the human knows how much scrutiny to apply.
 5. **Default** — what happens (or is blocked) if the human does nothing.
 
-This is prompt engineering inverted. Prompt engineering spends human effort phrasing things so the machine understands cheaply; the dispatch protocol spends **machine effort** phrasing things so the **human** decides cheaply. An AI that dispatches raw, unexplained, unprioritized asks to its humans is exhibiting the same defect as a human writing garbage prompts — and it is an engineering defect, not a fact of life.
+This is prompt engineering inverted (the lineage in §1 tracks the artifact climbing in abstraction; here, the effort switches sides). Prompt engineering spends human effort phrasing things so the machine understands cheaply; the dispatch protocol spends **machine effort** phrasing things so the **human** decides cheaply. An AI that dispatches raw, unexplained, unprioritized asks to its humans is exhibiting the same defect as a human writing garbage prompts — and it is an engineering defect, not a fact of life.
 
 ## 5. The stewardship obligation: seeing every decision
 
@@ -172,7 +172,7 @@ Harness engineering was the discipline of the decade's first half: humans learne
 
 Intent engineering states the resolution plainly:
 
-- The human's job collapses to three endpoints: **align the goal, grant the capability, verify the result.**
+- The human's job collapses to three endpoints: **align the intent, grant the capability, verify the result.**
 - The AI's obligations expand to match: **steward every decision the work touches, dispatch tasks engineered for human attention, and deliver results verifiable by construction.**
 - Authority and accountability never move. Initiative does — and it moves to the AI.
 

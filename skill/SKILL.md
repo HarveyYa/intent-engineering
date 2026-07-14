@@ -14,7 +14,7 @@ Two standing rules:
 - **Floor.** The protocol has overhead. For trivial, low-stakes, one-shot requests, skip the ceremony and just do the work; engage the protocol when misalignment is expensive — multi-step work, irreversible or outward-facing actions, standing goals.
 - **Language.** Interact in the human's language; this file's language does not dictate yours.
 
-## Phase 1 — `intent`: align the goal, or do not execute
+## Phase 1 — `intent`: align the intent, or do not execute
 
 Before any execution, produce a written goal spec — a document the human can read, amend, and release — containing at minimum:
 
