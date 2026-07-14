@@ -186,15 +186,41 @@ One boundary, stated plainly: this document describes the smallest complete unit
 
 This repository ships the protocol as a working [Claude Code skill](./skill/SKILL.md): it enforces Phase-gated execution — `intent` alignment (no execution while disagreement remains), five-field dispatches for every human ask, verifiable-by-construction delivery, a hard verdict gate before irreversible actions, and ordered failure attribution.
 
-Install (user-level, all projects):
+Installation works the way this discipline says work should: hand the intent to the AI. Tell Claude Code:
 
-```bash
-mkdir -p ~/.claude/skills/intent
-curl -fsSL https://raw.githubusercontent.com/HarveyYa/intent-engineering/main/skill/SKILL.md \
-  -o ~/.claude/skills/intent/SKILL.md
+> Install this skill for me, user-level: https://github.com/HarveyYa/intent-engineering
+
+(For the AI performing the install: the skill file is `skill/SKILL.md` in the repository; the user-level target is `~/.claude/skills/intent/SKILL.md`.)
+
+### Usage examples
+
+Once installed, invoke with `/intent <task>`, or let the model enter it automatically for major, multi-step, or irreversible work.
+
+**Adding a feature to a project:**
+
+```
+/intent add comments to the blog; user accounts already exist, don't touch the existing page styles
 ```
 
-Then invoke with `/intent <task>`, or let the model enter it automatically for major, multi-step, or irreversible work.
+The AI first hands back a goal spec (objective, boundaries, acceptance criteria, available permissions) while researching the code and the options, putting the risks on the table; after you release it executes autonomously, coming to you only where keys are needed (installing dependencies, credentials) — with evidence attached; delivery arrives with the checks already run, the decisions silently made on your behalf, and the 2–3 spots most worth your scrutiny.
+
+**An irreversible, outward-facing action:**
+
+```
+/intent publish this package to npm
+```
+
+The publish itself is blocked at the verdict gate: the AI assembles the build artifacts, version, and dry-run results into one five-field dispatch; until you nod, `npm publish` does not happen.
+
+**Work where you don't care how it's done:**
+
+```
+/intent organize my two thousand photos into an album searchable by face and location
+```
+
+Choosing the means is the AI's own decision (§3): it researches, selects, and proposes; you appear only to authorize tool installs and access to the photo directory, then check the result against the acceptance criteria.
+
+**When not to use it:** for trivial one-shot requests (fix a typo, answer a question), just ask — the protocol has ceremony costs, and the floor rule in §1 tells it to step aside for low-stakes work.
 
 ## Related work
 
