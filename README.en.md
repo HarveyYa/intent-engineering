@@ -188,7 +188,9 @@ This repository ships the protocol as a working [Claude Code skill](./skill/SKIL
 
 Installation works the way this discipline says work should: hand the intent to the AI. Tell Claude Code:
 
-> Install this skill for me, user-level: https://github.com/HarveyYa/intent-engineering
+```
+Install this skill for me, user-level: https://github.com/HarveyYa/intent-engineering
+```
 
 (For the AI performing the install: the skill file is `skill/SKILL.md` in the repository; the user-level target is `~/.claude/skills/intent/SKILL.md`.)
 
