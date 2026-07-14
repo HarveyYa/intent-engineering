@@ -2,23 +2,29 @@
 
 ---
 
-# Human-Engineering
+# Intent Engineering
 
 **The engineering discipline for the human side of AI-led systems.**
 
-> Harness engineering wraps the *machine* so it can work inside a human's workflow.
-> Human-engineering wraps the *human* so they can work inside an AI's workflow.
-> The industry has built the first. This document defines the second.
+> Prompt engineering shapes a message; context engineering shapes a window.
+> The stronger the model, the more abstract the artifact a human hands it.
+> The next stop on that lineage is the last thing a human still hands over in person — the intent. This document defines that stop.
 
 ---
 
 ## 1. Definition
 
-**Human-engineering** is the discipline of designing the human's role, interface, and protocols inside an AI-led system — so that human involvement is **rare, precise, and high-leverage**.
+**Intent engineering** is the discipline of designing the human's role, interface, and protocols inside an AI-led system — so that human involvement is **rare, precise, and high-leverage**.
 
 Its subject matter in one sentence: **a human and an AI completing a task goal together, with the AI leading as the premise — the human's work reduced to a standard form, and even the human's instructions subject to optimization and correction (§3).**
 
-The industry consensus formula for agents is:
+The name marks the discipline's center of gravity. A human in such a system does exactly three things (§3): align the intent, grant the capability, verify the result. Intent is the highest-leverage of the three — every downstream decision the AI makes derives from it, it is the default suspect in every failure, and as models strengthen it asymptotically becomes the human's only remaining work (§6). Just as context engineering governs more than context — tools, memory, retrieval — intent engineering governs more than intent: the name points at the center; the discipline covers the entire interface between the human and the AI.
+
+One boundary stone at the door: **intent engineering is not phrasing.** "Saying what you want more clearly" is prompt engineering with better manners. What intent engineering engineers is the *entire path* an intent travels through an AI-led system — how it is elicited and compiled (§3), granted capability (§3), unfolded into dispatches (§4), stewarded (§5), and verified (§7), with the AI's matching obligations at every step.
+
+By lineage, it is the next stop after prompt engineering and context engineering. The artifacts handed to the machine grow more abstract in order: a prompt is a message; a context is the full input of one invocation; an intent is the goal itself. At each step up, the human hands over less and the system takes over more — driven by axiom A1: capability migrates to the AI.
+
+By structure, it is the mirror image of harness engineering. The industry consensus formula for agents is:
 
 ```
 Agent  =  Model  +  Harness
@@ -26,7 +32,7 @@ Agent  =  Model  +  Harness
 
 The harness is everything wrapped around the model: tools, permissions, guardrails, feedback loops, observability. Harness engineering asks: *given a capable model, how do we engineer its environment so it performs reliably for humans?*
 
-Human-engineering is the mirror image:
+Intent engineering is the mirror image:
 
 ```
 System  =  AI (drive)  +  Human (authority)
@@ -34,7 +40,7 @@ System  =  AI (drive)  +  Human (authority)
 
 It asks the inverted question: *given a capable AI that leads the workflow, how do we engineer the **human's** environment — their duties, their interface, the tasks dispatched to them — so the human performs reliably for the system?*
 
-| Dimension | Harness engineering | Human-engineering |
+| Dimension | Harness engineering | Intent engineering |
 |---|---|---|
 | What gets engineered | The AI's environment: tools, constraints, guardrails | The human's role: duties, interface, protocols |
 | Who sets rules for whom | Human → AI | AI → Human |
@@ -42,9 +48,9 @@ It asks the inverted question: *given a capable AI that leads the workflow, how 
 | Scarce resource optimized | Model reliability | **Human attention and authority** |
 | Failure it prevents | The AI doing the wrong thing | The human becoming the bottleneck or the blind spot |
 
-Neither replaces the other. A production system needs both: a harness so the AI acts safely, and human-engineering so the human acts effectively.
+Neither replaces the other. A production system needs both: a harness so the AI acts safely, and intent engineering so the human acts effectively.
 
-The discipline also has a floor. Running the protocol costs alignment effort and dispatch overhead; below a certain stake, the ceremony outweighs the work. Human-engineering engages when misalignment is expensive — multi-step work, irreversible or outward-facing actions, standing goals — and steps aside for trivial requests, exactly as a harness distinguishes a production deploy from a scratch script.
+The discipline also has a floor. Running the protocol costs alignment effort and dispatch overhead; below a certain stake, the ceremony outweighs the work. Intent engineering engages when misalignment is expensive — multi-step work, irreversible or outward-facing actions, standing goals — and steps aside for trivial requests, exactly as a harness distinguishes a production deploy from a scratch script.
 
 ## 2. Three axioms
 
@@ -59,7 +65,7 @@ AI has intelligence without a body or legal standing. Permissions, credentials, 
 **A3 — Accountability is non-transferable.**
 When outcomes go wrong, responsibility lands on a human — legally, contractually, morally. No deployment structure changes this. The human can delegate execution and even judgment, but never accountability.
 
-**Consequence.** A1 pushes work toward the AI; A2 and A3 anchor authority to the human. The stable equilibrium is therefore not "human commands, AI executes" (wastes A1) nor "AI does everything" (violates A2, A3). It is: **the AI holds the initiative — it plans, executes, schedules, and dispatches; the human holds the authority — and exposes it through a small, well-defined interface.** Human-engineering is the design of that interface.
+**Consequence.** A1 pushes work toward the AI; A2 and A3 anchor authority to the human. The stable equilibrium is therefore not "human commands, AI executes" (wastes A1) nor "AI does everything" (violates A2, A3). It is: **the AI holds the initiative — it plans, executes, schedules, and dispatches; the human holds the authority — and exposes it through a small, well-defined interface.** Intent engineering is the design of that interface.
 
 ## 3. The Human API
 
@@ -98,7 +104,7 @@ This is prompt engineering inverted. Prompt engineering spends human effort phra
 
 ## 5. The stewardship obligation: seeing every decision
 
-If the AI holds the initiative, it holds the whole board. In a human-led workflow, omissions are caught by layers of managerial review; human-engineering removes those layers *by design* — the human at `verdict` samples, and a sample cannot catch a systematic omission. Comprehensive stewardship is therefore not a virtue of good execution; it is a **constitutive obligation of holding the initiative** — not extra credit, but part of what "leading" means, the way keeping the books is part of what being the treasurer means. Nobody else is looking.
+If the AI holds the initiative, it holds the whole board. In a human-led workflow, omissions are caught by layers of managerial review; intent engineering removes those layers *by design* — the human at `verdict` samples, and a sample cannot catch a systematic omission. Comprehensive stewardship is therefore not a virtue of good execution; it is a **constitutive obligation of holding the initiative** — not extra credit, but part of what "leading" means, the way keeping the books is part of what being the treasurer means. Nobody else is looking.
 
 The obligation has two layers, and the order matters:
 
@@ -115,7 +121,7 @@ And because "the AI will think of everything" is as unreliable a claim as "the h
 
 ## 6. Failure attribution
 
-When a result fails verification, human-engineering prescribes a fixed order of inquiry:
+When a result fails verification, intent engineering prescribes a fixed order of inquiry:
 
 1. **`intent` defect** — the goal was under-specified, boundaries missing, acceptance criteria vague. *This is the default suspect.* In practice, most failures of AI-led work trace here. Note that under the compile duty (§3), an intent defect that reached execution is a **shared** defect: the human uttered it, but the AI accepted it unlinted — "the instruction was bad" is never, by itself, an exculpation.
 2. **`grant` defect** — the AI lacked a tool, permission, or piece of context that the human could have provided.
@@ -130,7 +136,7 @@ The distribution also steepens over time: by A1, the share of (3) and (4) shrink
 
 The strongest objection to AI-led systems targets the `verdict` endpoint: **a human cannot verify what they can no longer understand.** As AI capability grows, unaided human verification weakens — this is the *scalable oversight problem*, and it is the load-bearing risk of this entire framework.
 
-Human-engineering's answer is that verifiability is the **deliverer's** burden, not the verifier's:
+Intent engineering's answer is that verifiability is the **deliverer's** burden, not the verifier's:
 
 **Every deliverable must be verifiable by construction.** The AI does not merely deliver the artifact; it delivers the artifact *plus* the means to check it: the load-bearing assumptions made, the evidence gathered, the checks already run and their results, and a legible account of what changed. A deliverable that can only be verified by re-doing the work is a defective deliverable, no matter how correct its content. And legibility is measured against the *actual* verifier — the accountable human in this loop, with their vocabulary and their expertise — not an idealized reader. A delivery its own verifier cannot understand is defective by construction; when that happens, diagnosing where it fails and re-delivering legibly is the deliverer's work, never the verifier's.
 
@@ -146,17 +152,17 @@ The gap also has a second face. The first is the human who *cannot* verify; the 
 
 ## 8. The maturity model
 
-Adoption of human-engineering is graded by where the human sits in the loop. Trust — earned via the spot-check record of §7 — is what moves a system up a level; a failed verdict moves it down.
+Adoption of intent engineering is graded by where the human sits in the loop. Trust — earned via the spot-check record of §7 — is what moves a system up a level; a failed verdict moves it down.
 
 | Level | Name | Who leads | Human involvement |
 |---|---|---|---|
-| HE-0 | Copilot | Human | Human does the work; AI assists inline. |
-| HE-1 | Executor | Human | Human decomposes the work; AI executes the pieces. |
-| HE-2 | Gated agent | AI (within a task) | AI executes whole tasks; human approves at every step-gate. |
-| HE-3 | **Human API** | **AI (within a goal)** | **Human appears only at the three endpoints: `intent`, `grant`, `verdict`.** |
-| HE-4 | Standing goals | AI (across goals) | Goals persist; the AI schedules work over time and dispatches to humans asynchronously as endpoints require. |
+| IE-0 | Copilot | Human | Human does the work; AI assists inline. |
+| IE-1 | Executor | Human | Human decomposes the work; AI executes the pieces. |
+| IE-2 | Gated agent | AI (within a task) | AI executes whole tasks; human approves at every step-gate. |
+| IE-3 | **Human API** | **AI (within a goal)** | **Human appears only at the three endpoints: `intent`, `grant`, `verdict`.** |
+| IE-4 | Standing goals | AI (across goals) | Goals persist; the AI schedules work over time and dispatches to humans asynchronously as endpoints require. |
 
-Most of today's industry operates at HE-0 through HE-2 — and most of what is sold as "AI transformation" is HE-1 with better marketing. **Human-engineering proper begins at HE-3**: the point where the human stops managing the process and starts serving as its authority interface. HE-4 is the same contract extended across time — the AI holds standing goals and pings its humans when an endpoint is needed, which is how "AI dispatches tasks to humans" becomes literal daily practice.
+Most of today's industry operates at IE-0 through IE-2 — and most of what is sold as "AI transformation" is IE-1 with better marketing. **Intent engineering proper begins at IE-3**: the point where the human stops managing the process and starts serving as its authority interface. IE-4 is the same contract extended across time — the AI holds standing goals and pings its humans when an endpoint is needed, which is how "AI dispatches tasks to humans" becomes literal daily practice.
 
 The checkpoint schedule is dynamic by design: new domain or new stakes → more `grant` gates and denser spot-checks; accumulating clean verdicts → fewer gates, coarser checks. Autonomy is never *given*; it is *measured into existence*.
 
@@ -164,7 +170,7 @@ The checkpoint schedule is dynamic by design: new domain or new stakes → more 
 
 Harness engineering was the discipline of the decade's first half: humans learned to build environments in which AI works reliably. Its very success creates the successor problem. Once the harness is good enough, the AI leads the workflow — and the unengineered component left in the system is the human.
 
-Human-engineering states the resolution plainly:
+Intent engineering states the resolution plainly:
 
 - The human's job collapses to three endpoints: **align the goal, grant the capability, verify the result.**
 - The AI's obligations expand to match: **steward every decision the work touches, dispatch tasks engineered for human attention, and deliver results verifiable by construction.**
@@ -183,17 +189,18 @@ This repository ships the protocol as a working [Claude Code skill](./skill/SKIL
 Install (user-level, all projects):
 
 ```bash
-mkdir -p ~/.claude/skills/human-engineering
-curl -fsSL https://raw.githubusercontent.com/HarveyYa/human-engineering/main/skill/SKILL.md \
-  -o ~/.claude/skills/human-engineering/SKILL.md
+mkdir -p ~/.claude/skills/intent
+curl -fsSL https://raw.githubusercontent.com/HarveyYa/intent-engineering/main/skill/SKILL.md \
+  -o ~/.claude/skills/intent/SKILL.md
 ```
 
-Then invoke with `/human-engineering <task>`, or let the model enter it automatically for major, multi-step, or irreversible work.
+Then invoke with `/intent <task>`, or let the model enter it automatically for major, multi-step, or irreversible work.
 
 ## Related work
 
-Human-engineering synthesizes four existing threads and names their sum:
+Intent engineering synthesizes five existing threads and names their sum:
 
+- **The prompt → context lineage** — the two stops before this one: [Prompt engineering overview (Anthropic)](https://platform.claude.com/docs/en/docs/build-with-claude/prompt-engineering/overview), [Effective context engineering for AI agents (Anthropic)](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), [Context engineering (Simon Willison)](https://simonwillison.net/2025/Jun/27/context-engineering/)
 - **Harness engineering** — the "Agent = Model + Harness" formulation and the 2026 shift of focus from agents to their harnesses: [2025 Was Agents. 2026 Is Agent Harnesses.](https://aakashgupta.medium.com/2025-was-agents-2026-is-agent-harnesses-heres-why-that-changes-everything-073e9877655e), [Agent Harness Engineering — The Rise of the AI Control Plane](https://medium.com/@adnanmasood/agent-harness-engineering-the-rise-of-the-ai-control-plane-938ead884b1d), [What Is Harness Engineering?](https://atlan.com/know/what-is-harness-engineering/)
 - **AI-to-human task delegation** — principal-agent analyses where the AI is the delegating principal, with empirical evidence that AI-led delegation can outperform human-led: [Task delegation from AI to humans: A principal-agent perspective](https://www.researchgate.net/publication/374420256_Task_delegation_from_AI_to_humans_A_principal-agent_perspective), [Authenticated Delegation and Authorized AI Agents](https://arxiv.org/html/2501.09674v1)
 - **Scalable oversight** — the verification gap and its countermeasures: [Scalable Oversight (LessWrong)](https://www.lesswrong.com/w/scalable-oversight), [Human-AI Complementarity: A Goal for Amplified Oversight (DeepMind)](https://deepmindsafetyresearch.medium.com/human-ai-complementarity-a-goal-for-amplified-oversight-0ad8a44cae0a), [How to Evaluate AI that's Smarter than Us (ACM Queue)](https://queue.acm.org/detail.cfm?id=3722043)
@@ -201,7 +208,7 @@ Human-engineering synthesizes four existing threads and names their sum:
 
 ## Provenance
 
-This document was produced under its own protocol: a human set the goal, granted the permissions (tooling, network, repository), and verified the result; the AI researched, formulated, and wrote the theory, and dispatched to the human only what required their authority. The first draft's misalignment was traced — per §6, rule 1 — to an under-specified `intent`, corrected, and re-executed. The stewardship obligation (§5) was likewise earned, not invented: the human's spot-check caught exactly such a silently-made decision — a license carried unexamined across a scope change — and the incident was generalized into protocol. The compile duty (§3) followed the same path: it entered the theory when the human asked whether a leading AI ought to correct the very instructions it receives. And the legibility law in §7 exists because the human said "parts of this I can't understand" — a verdict that, by §7's own logic, indicted the document rather than the reader — and then pointed out that asking him to locate the unclear passages was itself a violation: diagnosing a defective delivery is the deliverer's work. The fix became law and inline glosses, not a longer document. The three alignment-process rules (written spec, research first, guide-and-echo), the ownership of means, and asymptotic attribution (v1.5) took the same road: they arrived as a single statement of direction from the human — compiled per §3, its increments adopted, and its one clause conflicting with §6 ("a fully aligned first step leaves nothing to fail") surfaced and, by the human's ruling, landed as an asymptotic claim rather than an absolute one.
+This document was produced under its own protocol: a human set the goal, granted the permissions (tooling, network, repository), and verified the result; the AI researched, formulated, and wrote the theory, and dispatched to the human only what required their authority. The first draft's misalignment was traced — per §6, rule 1 — to an under-specified `intent`, corrected, and re-executed.
 
 ## License
 
